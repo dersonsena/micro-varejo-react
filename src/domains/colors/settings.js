@@ -1,6 +1,10 @@
+/** @type {String} */
 export const title = 'Cores'
+
+/** @type {String} */
 export const moduleRoute = '/entries/colors'
 
+/** @type {Function} */
 export const table = () => ({
   title,
   moduleRoute,
@@ -10,6 +14,7 @@ export const table = () => ({
   },
 });
 
+/** @type {Function} */
 export const form = () => ({
   title,
   moduleRoute,

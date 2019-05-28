@@ -8,7 +8,10 @@ class MainLayout extends Component {
 
   render() {
     return (
-      <div>Main Layout</div>
+      <div>
+        <h1>MAIN Layout</h1>
+        {this.props.children}
+      </div>
     );
   }
 }
