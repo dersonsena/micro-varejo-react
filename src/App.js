@@ -1,17 +1,6 @@
 import React from 'react';
-import AppFormField from '~/components/app/AppFormField';
+import Routes from '~/components/Routes';
 
-function App() {
-  return (
-    <div className="App">
-      <AppFormField
-        label="Your Fist Name"
-        name="name"
-        placeholder="Type your name..."
-        required={true}
-        onChange={e => this.handleChange(e)} />
-    </div>
-  );
-}
+const App = () => <Routes />;
 
 export default App;
