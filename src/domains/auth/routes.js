@@ -2,7 +2,10 @@ import React from 'react';
 import LoginLayout from '~/layout/LoginLayout';
 import LoginPage from './pages/LoginPage';
 
+/** @type {String} */
 export const LOGIN = '/login';
+
+/** @type {String} */
 export const FORGOT_PASSWORD = '/forgot-password';
 
 export default [

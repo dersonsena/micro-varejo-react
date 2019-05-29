@@ -1,39 +1,31 @@
 import React from 'react';
 import AppLabel from '~/components/app/AppLabel';
-import AppInput from '~/components/app/AppInput';
+import AppCheckbox from '~/components/app/AppCheckbox';
 import PropTypes from 'prop-types';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  type: PropTypes.string,
-  hint: PropTypes.string,
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
   show: PropTypes.bool,
   errorIcon: PropTypes.string,
-  hintIcon: PropTypes.string,
-  bsSize: PropTypes.oneOf(['', 'sm', 'lg']),
   labelClass: PropTypes.string
 };
 
 const defaultProps = {
-  type: 'text',
-  bsSize: '',
   valid: false,
   invalid: false,
   required: false,
   show: true,
   errorIcon: 'fas fa-info-circle',
-  hintIcon: 'fas fa-exclamation-circle',
+  labelClass: 'form-check-label'
 };
 
-const AppFormField = (props) => {
+const AppFormCheckbox = (props) => {
   let {
     className,
     label,
-    hint,
-    hintIcon,
     error,
     errorIcon,
     valid,
@@ -46,12 +38,6 @@ const AppFormField = (props) => {
     return;
   }
 
-  const hintText = (hint ? (
-    <small id={`${attrs.name}-hint`} className="form-text text-muted">
-      <i className={hintIcon}></i> { hint }
-    </small>
-  ) : '');
-
   const errorText = (error ? (
     <div className="invalid-feedback">
       <i className={errorIcon}></i> { error }
@@ -60,27 +46,28 @@ const AppFormField = (props) => {
 
   const htmlFor = (attrs.hasOwnProperty('id') ? attrs.hasOwnProperty('id') : attrs.name);
 
-  const labelComponent = label && (
-    <AppLabel
-      className={labelClass}
-      htmlFor={htmlFor}
-      valid={valid}
-      invalid={invalid}
-      required={attrs.required}
-      text={label} />
-  );
-
   return (
-    <div className="form-group">
-      { label ? labelComponent : '' }
-      <AppInput valid={valid} invalid={invalid} { ...attrs }  />
-      { hintText }
+    <div className="form-group form-check">
+      <AppCheckbox
+        valid={valid}
+        invalid={invalid}
+        { ...attrs }  />
+
+      <AppLabel
+        className={labelClass}
+        htmlFor={htmlFor}
+        valid={valid}
+        invalid={invalid}
+        required={attrs.required}
+        removeDefaultClasses={true}
+        text={label} />
+
       { errorText }
     </div>
   );
 };
 
-AppFormField.propTypes = propTypes;
-AppFormField.defaultProps = defaultProps;
+AppFormCheckbox.propTypes = propTypes;
+AppFormCheckbox.defaultProps = defaultProps;
 
-export default AppFormField;
+export default AppFormCheckbox;

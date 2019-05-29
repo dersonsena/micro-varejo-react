@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getUserToken, isAuthenticated } from '~/utils/auth';
 
 const HTTP = axios.create({
-  baseURL: process.env.VUE_APP_ROOT_API,
+  baseURL: process.env.REACT_APP_API_HOST,
   timeout: 100000,
   headers: {
     'Content-Type': 'application/json'

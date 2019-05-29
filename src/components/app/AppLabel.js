@@ -3,22 +3,33 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  removeDefaultClasses: PropTypes.bool
 };
 
 const defaultProps = {
   valid: false,
   invalid: false,
-  required: false
+  required: false,
+  removeDefaultClasses: false
 };
 
 const AppLabel = (props) => {
-  let { className, text, valid, invalid, required, ...attrs } = props;
+  let {
+    className,
+    text,
+    valid,
+    invalid,
+    required,
+    removeDefaultClasses,
+    ...attrs
+  } = props;
 
   let classes = classNames(
+    !removeDefaultClasses ? 'form-label' : false,
     className,
     valid ? 'text-success' : false,
     invalid ? 'text-danger' : false
@@ -27,7 +38,11 @@ const AppLabel = (props) => {
   const asterix = (required ? <span className="text-danger">*</span> : '');
 
   return (
-    <label {...attrs} className={classes}>{ asterix } { text }:</label>
+    text ? (
+      <label {...attrs} className={classes}>{asterix} {text}</label>
+    ) : (
+      <label {...attrs} className={classes}>{props.children}</label>
+    )
   )
 };
 

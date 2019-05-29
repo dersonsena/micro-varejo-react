@@ -7,7 +7,8 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   valid: PropTypes.bool,
   invalid: PropTypes.bool,
-  bsSize: PropTypes.oneOf(['sm', 'lg'])
+  bsSize: PropTypes.oneOf(['', 'sm', 'lg']),
+  removeDefaultClasses: PropTypes.bool
 };
 
 const defaultProps = {
@@ -15,16 +16,17 @@ const defaultProps = {
   bsSize: '',
   valid: false,
   invalid: false,
+  removeDefaultClasses: false
 };
 
 const AppInput = (props) => {
-  let { className, valid, invalid, bsSize, ...attrs } = props;
+  let { className, valid, invalid, bsSize, removeDefaultClasses, ...attrs } = props;
 
   attrs.id = (attrs.hasOwnProperty('id') ? attrs.id : attrs.name);
   attrs.autoComplete = (attrs.hasOwnProperty('autoComplete') ? attrs.autoComplete : 'off');
 
   const classes = classNames(
-    'form-control',
+    !removeDefaultClasses ? 'form-control' : false,
     className,
     bsSize ? `form-control-${bsSize}` : false,
     valid ? `is-valid` : false,

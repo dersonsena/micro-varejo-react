@@ -1,4 +1,4 @@
-import Api from '../../helpers/services/Api';
+import Api from '~/utils/services/Api';
 import { storeUserToken } from '~/utils/auth';
 
 /**
@@ -15,7 +15,7 @@ export default class AuthService extends Api {
       .post(`/auth/email-password`, { email, password })
       .then(response => {
         storeUserToken(response.data.token);
-        return response
+        return response;
       });
   }
 }
