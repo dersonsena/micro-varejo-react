@@ -1,10 +1,10 @@
 /** @type {String} */
-export const title = 'Cores'
+export const title = 'Cores';
 
 /** @type {String} */
-export const moduleRoute = '/entries/colors'
+export const moduleRoute = '/entries/colors';
 
-/** @type {Function} */
+/** @type {Object} */
 export const table = () => ({
   title,
   moduleRoute,
@@ -14,7 +14,7 @@ export const table = () => ({
   },
 });
 
-/** @type {Function} */
+/** @type {Object} */
 export const form = () => ({
   title,
   moduleRoute,

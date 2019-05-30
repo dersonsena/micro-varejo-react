@@ -6,10 +6,16 @@ import FormComponent from '~/utils/FormComponent';
 import AppButton from '~/components/app/AppButton';
 import AuthService from '~/domains/auth/AuthService';
 import lang from '~/lang';
+import { storeUserToken, isAuthenticated } from '~/utils/auth';
+import { DASHBOARD } from '~/domains/app/routes';
 
 class LoginPage extends FormComponent {
   constructor(props) {
     super(props);
+
+    if (isAuthenticated()) {
+      this.props.history.replace(DASHBOARD);
+    }
 
     this.service = AuthService.build();
 
@@ -26,7 +32,8 @@ class LoginPage extends FormComponent {
     this.service
       .login(this.state.fields.email, this.state.fields.password)
       .then(response => {
-        console.log(response);
+        storeUserToken(response.data.token);
+        this.props.history.replace(DASHBOARD);
       })
       .catch(errorInfo => {
         this.setState({ errors: JSON.parse(errorInfo.response.data) });
