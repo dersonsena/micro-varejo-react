@@ -1,4 +1,5 @@
 import ptBr from './pt-br';
+import en from './en';
 
 /**
  * @param {String} locale
@@ -6,7 +7,8 @@ import ptBr from './pt-br';
  */
 export default (locale) => {
   const messages = {
-    'pt-br': ptBr
+    'pt-br': ptBr,
+    en
   }
 
   return messages[locale]

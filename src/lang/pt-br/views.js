@@ -15,6 +15,6 @@ export default {
     btnLoginLoading: 'Carregando...',
   },
   colors: {
-    title: 'Pedidos'
+    title: 'Cores'
   }
 }
