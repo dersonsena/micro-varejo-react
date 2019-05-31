@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const getMarkupSubItem = (item, index) => {
   const classes = classnames(
@@ -9,15 +10,15 @@ const getMarkupSubItem = (item, index) => {
 
   return (
     <li key={index} className={classes}>
-      <a href="#" className="sidenav-link">
+      <Link to={item.to} className="sidenav-link">
         <i className={item.icon}></i>{' '}
         <div>{item.text}</div>
-      </a>
+      </Link>
     </li>
   )
 };
 
-const SidebarItem = ({ item }) => {
+const SidebarItem = ({ item, onClick, index }) => {
   const isDivider = item.hasOwnProperty('divider');
 
   if (isDivider) {
@@ -41,12 +42,21 @@ const SidebarItem = ({ item }) => {
     item.items && item.items.length > 0 ? 'sidenav-toggle' : false
   );
 
+  const link = item.hasOwnProperty('to') ? (
+    <Link to={item.to} className={aClasses} onClick={e => onClick(e, item, index)}>
+      <i className={item.icon}></i>{' '}
+      <div>{item.text}</div>
+    </Link>
+  ) : (
+    <a href="#" className={aClasses} onClick={e => onClick(e, item, index)}>
+      <i className={item.icon}></i>{' '}
+      <div>{item.text}</div>
+    </a>
+  )
+
   return (
     <li className={liClasses}>
-      <a href="#" className={aClasses}>
-        <i className={item.icon}></i>{' '}
-        <div>{item.text}</div>
-      </a>
+      { link }
       { subItens.length > 0 &&
         <ul className="sidenav-menu">
           { subItens }

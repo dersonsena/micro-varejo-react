@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar/Sidebar';
+import sidebarItems from './sidebar/items';
 
 class MainLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+
+    this.state = {
+      sidebarItems
+    }
+  }
+
+  toggleMenu = (e, item, key) => {
+    const newItems = { ...sidebarItems };
+
+    newItems[key].isOpen = !newItems[key].isOpen;
+    newItems[key].isActive = newItems[key].isOpen;
+
+    this.setState({ sidebarItems: newItems });
   }
 
   render() {
@@ -31,7 +44,7 @@ class MainLayout extends Component {
 
               <div className="sidenav-divider mt-0"></div>
 
-              <Sidebar />
+              <Sidebar items={sidebarItems} onClick={this.toggleMenu} />
             </div>
 
             <div className="layout-container">
