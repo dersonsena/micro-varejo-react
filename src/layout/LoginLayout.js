@@ -1,4 +1,5 @@
 import React from 'react';
+import '~/_assets/css/authentication.css';
 
 const LoginLayout = (props) => (
   <div className="authentication-wrapper authentication-2 ui-bg-cover ui-bg-overlay-container px-4" style={{ backgroundImage: "url('/images/1.jpg')" }}>
