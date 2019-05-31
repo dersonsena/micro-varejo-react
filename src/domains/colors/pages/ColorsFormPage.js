@@ -1,7 +1,7 @@
 import React from 'react';
 import FormComponent from '~/utils/FormComponent';
 
-class ColorsForm extends FormComponent {
+class ColorsFormPage extends FormComponent {
   constructor(props) {
     super(props);
     this.state = {  }
@@ -14,4 +14,4 @@ class ColorsForm extends FormComponent {
   }
 }
 
-export default ColorsForm;
+export default ColorsFormPage;

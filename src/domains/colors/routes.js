@@ -1,7 +1,7 @@
 import { title, moduleRoute } from './settings';
 import MainLayout from '~/layout/MainLayout';
 import ColorsPage from './pages/ColorsPage';
-import ColorsForm from './pages/ColorsForm';
+import ColorsForm from './pages/ColorsFormPage';
 
 export const INDEX = moduleRoute;
 export const CREATE = `${moduleRoute}/create`;
