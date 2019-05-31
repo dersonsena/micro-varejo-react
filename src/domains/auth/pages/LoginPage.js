@@ -8,6 +8,8 @@ import AuthService from '~/domains/auth/AuthService';
 import lang from '~/lang';
 import { storeUserToken, isAuthenticated } from '~/utils/auth';
 import { DASHBOARD } from '~/domains/app/routes';
+import { FORGOT_PASSWORD } from '~/domains/auth/routes';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends FormComponent {
   constructor(props) {
@@ -79,7 +81,7 @@ class LoginPage extends FormComponent {
               onChange={this.handleChange}
               label={[
                 <div key={0}>{lang('views.auth.password.label')}</div>,
-                <a key={1} href='#' tabIndex='-1' className="d-block small">{lang('views.auth.forgotPassword')}</a>
+                <Link to={FORGOT_PASSWORD} key={1} tabIndex='-1' className="d-block small">{lang('views.auth.forgotPassword')}</Link>
               ]}
               labelClass='d-flex justify-content-between align-items-end'
               placeholder={lang('views.auth.password.placeholder')} />

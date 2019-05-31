@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import sidebarItems from './sidebar/items';
+import { Link } from 'react-router-dom';
+import { DASHBOARD } from '~/domains/app/routes';
 
 class MainLayout extends Component {
   constructor(props) {
@@ -13,9 +15,10 @@ class MainLayout extends Component {
 
   toggleMenu = (e, item, key) => {
     const newItems = { ...sidebarItems };
+    const isOpen = !newItems[key].isOpen;
 
-    newItems[key].isOpen = !newItems[key].isOpen;
-    newItems[key].isActive = newItems[key].isOpen;
+    newItems[key].isOpen = isOpen;
+    newItems[key].isActive = isOpen;
 
     this.setState({ sidebarItems: newItems });
   }
@@ -34,12 +37,14 @@ class MainLayout extends Component {
 
               <div className="app-brand demo">
                 <span className="app-brand-logo demo bg-primary"></span>
-                <a href="#" className="app-brand-text demo sidenav-text font-weight-normal ml-2">
+
+                <Link to={DASHBOARD} className="app-brand-text demo sidenav-text font-weight-normal ml-2">
                   Appwork
-                </a>
-                <a href="#" className="layout-sidenav-toggle sidenav-link text-large ml-auto">
+                </Link>
+
+                <Link to={DASHBOARD} className="layout-sidenav-toggle sidenav-link text-large ml-auto">
                   <i className="ion ion-md-menu align-middle"></i>
-                </a>
+                </Link>
               </div>
 
               <div className="sidenav-divider mt-0"></div>
@@ -49,15 +54,15 @@ class MainLayout extends Component {
 
             <div className="layout-container">
               <nav className="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
-                <a href="#" className="navbar-brand app-brand demo d-lg-none py-0 mr-4">
+                <Link to={DASHBOARD} className="navbar-brand app-brand demo d-lg-none py-0 mr-4">
                   <span className="app-brand-logo demo bg-primary"></span>
                   <span className="app-brand-text demo font-weight-normal ml-2">Appwork</span>
-                </a>
+                </Link>
 
                 <div className="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
-                  <a className="nav-item nav-link px-0 mr-lg-4" href="#">
+                  <Link to={DASHBOARD} className="nav-item nav-link px-0 mr-lg-4">
                     <i className="ion ion-md-menu text-large align-middle"></i>
-                  </a>
+                  </Link>
                 </div>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">

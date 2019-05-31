@@ -1,6 +1,6 @@
-import React from 'react';
 import LoginLayout from '~/layout/LoginLayout';
 import LoginPage from './pages/LoginPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 /** @type {String} */
 export const LOGIN = '/login';
@@ -18,7 +18,7 @@ export default [
   {
     path: FORGOT_PASSWORD,
     layout: LoginLayout,
-    component: () => <h1>Esqueci minha Senha</h1>,
+    component: ForgotPasswordPage,
     meta: {}
   }
 ];

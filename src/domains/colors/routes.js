@@ -1,6 +1,7 @@
-import React from 'react';
 import { title, moduleRoute } from './settings';
 import MainLayout from '~/layout/MainLayout';
+import ColorsPage from './pages/ColorsPage';
+import ColorsForm from './pages/ColorsForm';
 
 export const INDEX = moduleRoute;
 export const CREATE = `${moduleRoute}/create`;
@@ -10,7 +11,7 @@ export default [
   {
     path: INDEX,
     isPrivate: true,
-    component: () => <h1>Colors - Index</h1>,
+    component: ColorsPage,
     layout: MainLayout,
     meta: {
       breadcrumb: [
@@ -22,7 +23,7 @@ export default [
   {
     path: CREATE,
     isPrivate: true,
-    component: () => <h1>Colors - CREATE</h1>,
+    component: ColorsForm,
     layout: MainLayout,
     meta: {
       scope: 'create',
@@ -36,7 +37,7 @@ export default [
   {
     path: UPDATE,
     isPrivate: true,
-    component: () => <h1>Colors - UPDATE</h1>,
+    component: ColorsForm,
     layout: MainLayout,
     meta: {
       scope: 'edit',

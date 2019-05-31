@@ -48,7 +48,8 @@ const SidebarItem = ({ item, onClick, index }) => {
       <div>{item.text}</div>
     </Link>
   ) : (
-    <a href="#" className={aClasses} onClick={e => onClick(e, item, index)}>
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <a className={aClasses} onClick={e => onClick(e, item, index)}>
       <i className={item.icon}></i>{' '}
       <div>{item.text}</div>
     </a>

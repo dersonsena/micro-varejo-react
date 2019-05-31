@@ -9,8 +9,8 @@ export default [
     to: '/'
   },
   {
-    isOpen: true,
-    isActive: true,
+    isOpen: false,
+    isActive: false,
     icon: 'sidenav-icon ion ion-ios-albums',
     text: lang('app.sidebarNav.entries'),
     items: [
@@ -33,7 +33,7 @@ export default [
         to: '/entries/suppliers'
       },
       {
-        isActive: true,
+        isActive: false,
         icon: 'sidenav-icon fas fa-store',
         text: lang('app.sidebarNav.stores'),
         to: '/entries/stores'
