@@ -1,57 +1,59 @@
+import lang from '~/lang';
+
 export default [
   {
     isOpen: false,
     isActive: false,
     icon: 'sidenav-icon ion ion-md-speedometer',
-    text: 'Dashboard',
+    text: lang('app.sidebarNav.dashboard'),
     to: '/'
   },
   {
     isOpen: true,
     isActive: true,
     icon: 'sidenav-icon ion ion-ios-albums',
-    text: 'Cadastros',
+    text: lang('app.sidebarNav.entries'),
     items: [
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-list',
-        text: 'Categorias Produto',
+        text: lang('app.sidebarNav.productCategories'),
         to: '/entries/product-categories'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-paint-brush',
-        text: 'Cores',
+        text: lang('app.sidebarNav.colors'),
         to: '/entries/colors'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-user-tie',
-        text: 'Fornecedores',
+        text: lang('app.sidebarNav.suppliers'),
         to: '/entries/suppliers'
       },
       {
         isActive: true,
         icon: 'sidenav-icon fas fa-store',
-        text: 'Lojas',
+        text: lang('app.sidebarNav.stores'),
         to: '/entries/stores'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-tshirt',
-        text: 'Produtos',
+        text: lang('app.sidebarNav.products'),
         to: '/entries/products'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-ruler-combined',
-        text: 'Tamanhos',
+        text: lang('app.sidebarNav.sizes'),
         to: '/entries/sizes'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-user-tie',
-        text: 'Vendedores',
+        text: lang('app.sidebarNav.sellers'),
         to: '/entries/sellers'
       },
     ]
@@ -61,24 +63,24 @@ export default [
     isOpen: false,
     isActive: false,
     icon: 'sidenav-icon fas fa-cogs',
-    text: 'Sistema',
+    text: lang('app.sidebarNav.system'),
     items: [
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-user-circle',
-        text: 'Usuários',
+        text: lang('app.sidebarNav.users'),
         to: '/system/users'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-cog',
-        text: 'Configurações',
+        text: lang('app.sidebarNav.settings'),
         to: '/system/settings'
       },
       {
         isActive: false,
         icon: 'sidenav-icon fas fa-sign-out-alt',
-        text: 'Sair',
+        text: lang('app.sidebarNav.logout'),
         to: '/logout'
       },
     ]
