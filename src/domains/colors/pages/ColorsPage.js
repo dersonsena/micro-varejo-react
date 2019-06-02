@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import AppTable from 'components/app/AppTable';
+import { table } from '../settings';
 
 class ColorsPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+
+    this.state = {
+      ...table()
+    }
   }
 
   render() {
@@ -51,26 +56,7 @@ class ColorsPage extends Component {
 
         <div className="card">
           <div className="card-datatable table-responsive">
-            <table id="user-list" className="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Account</th>
-                  <th>E-mail</th>
-                  <th>Name</th>
-                  <th>Latest activity</th>
-                  <th>Verified</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td colSpan='9' className='text-center'>Nenhum registro encontrado.</td>
-                </tr>
-              </tbody>
-            </table>
+            <AppTable fields={this.state.fields} rows={this.state.rows} />
           </div>
 
           <div className='card-body'>
