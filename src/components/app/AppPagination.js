@@ -20,6 +20,7 @@ const defaultProps = {
 };
 
 const AppPagination = (props) => {
+  console.log(props);
 
   const {
     className,
@@ -31,6 +32,10 @@ const AppPagination = (props) => {
     onClickPage,
     removeDefaultClasses
   } = props;
+
+  if (pageCount <= 1) {
+    return null;
+  }
 
   const pageNumbers = (() => {
     let pages = [];

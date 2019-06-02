@@ -12,29 +12,7 @@ export const table = () => ({
     name: '',
     status: ''
   },
-  pagination: {},
-  rows: [
-    {
-      "id": 14,
-      "client_id": 1,
-      "name": "111111",
-      "abbreviation": "111",
-      "status": 1,
-      "created_at": "25/04/2019 14:31:18",
-      "updated_at": "25/04/2019 14:31:18",
-      "created_by": 1
-    },
-    {
-      "id": 16,
-      "client_id": 1,
-      "name": "3333",
-      "abbreviation": "333",
-      "status": 1,
-      "created_at": "25/04/2019 15:58:23",
-      "updated_at": "25/04/2019 15:58:23",
-      "created_by": 1
-    }
-  ],
+  rows: [],
   fields: [
     {
       key: 'name',

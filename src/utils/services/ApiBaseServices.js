@@ -34,13 +34,21 @@ export default class ApiBaseServices extends Api {
    * @returns {*|PromiseLike<T | never>|Promise<T | never>}
    */
   search (parameters = {}) {
-    let stringParams = ''
     const params = {}
 
     for (let fieldName in parameters) {
-      params[`filter[${fieldName}]`] = parameters[fieldName]
-      stringParams = '?' + queryString.stringify(params)
+      if (fieldName === 'filters') {
+        for (let filterName in parameters.filters) {
+          params[`filter[${filterName}]`] = parameters.filters[filterName];
+        }
+
+        continue;
+      }
+
+      params[fieldName] = parameters[fieldName];
     }
+
+    const stringParams = '?' + queryString.stringify(params)
 
     return this.http.get(`${stringParams}`)
       .then(response => response)

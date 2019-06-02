@@ -1,22 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AppTable from '~/components/app/AppTable';
 import { table } from '../settings';
 import AppPagination from '~/components/app/AppPagination';
 import AppTableSummary from 'components/app/AppTableSummary';
+import TableComponent from '~/utils/TableComponent';
+import ColorsService from '../ColorsService';
 
-class ColorsPage extends Component {
+class ColorsPage extends TableComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      ...table(),
-      pagination: {
-        totalCount: 50,
-        currentPage: 2,
-        pageCount: 5,
-        size: 'sm'
-      }
+      ...this.state,
+      ...table()
     }
+
+    this.service = ColorsService.build();
+  }
+
+  componentWillMount() {
+    this.refreshTable();
   }
 
   render() {
