@@ -12,6 +12,7 @@ export const table = () => ({
     name: '',
     status: ''
   },
+  pagination: {},
   rows: [
     {
       "id": 14,

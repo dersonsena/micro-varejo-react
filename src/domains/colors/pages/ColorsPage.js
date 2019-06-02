@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import AppTable from 'components/app/AppTable';
+import AppTable from '~/components/app/AppTable';
 import { table } from '../settings';
+import AppPagination from '~/components/app/AppPagination';
+import AppTableSummary from 'components/app/AppTableSummary';
 
 class ColorsPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      ...table()
+      ...table(),
+      pagination: {
+        totalCount: 50,
+        currentPage: 2,
+        pageCount: 5,
+        size: 'sm'
+      }
     }
   }
 
@@ -54,35 +62,18 @@ class ColorsPage extends Component {
           </div>
         </div>
 
+        <AppTableSummary
+          className='text-right'
+          totalCount={this.state.pagination.totalCount}
+          pageCount={this.state.pagination.pageCount} />
+
         <div className="card">
           <div className="card-datatable table-responsive">
             <AppTable fields={this.state.fields} rows={this.state.rows} />
           </div>
 
           <div className='card-body'>
-            <ul className="pagination pagination-sm pull-right">
-              <li className="page-item disabled">
-                <a className="page-link" href="javascript:void(0)">«</a>
-              </li>
-              <li className="page-item active">
-                <a className="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0)">2</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0)">3</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0)">4</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0)">5</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0)">»</a>
-              </li>
-            </ul>
+            <AppPagination {...this.state.pagination} />
           </div>
         </div>
       </>
