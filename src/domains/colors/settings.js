@@ -1,3 +1,6 @@
+import React from 'react';
+import AppYesNoBadge from "components/app/AppYesNoBadge";
+
 /** @type {String} */
 export const title = 'Cores';
 
@@ -34,7 +37,7 @@ export const table = () => ({
       tdClass: 'align-middle py-3 text-center',
       thStyle: { width: '110px' },
       formatter: (value, key, item) => {
-        return (value === 1 ? 'Ativo' : 'Inativo')
+        return <AppYesNoBadge value={value} yesText='Ativo' noText='Inativo' />
       }
     },
     {

@@ -5,6 +5,9 @@ import AppPagination from '~/components/app/AppPagination';
 import AppTableSummary from 'components/app/AppTableSummary';
 import TableComponent from '~/utils/TableComponent';
 import ColorsService from '../ColorsService';
+import AppFormField from '~/components/app/AppFormField';
+import AppButton from '~/components/app/AppButton';
+import AppLabel from 'components/app/AppLabel';
 
 class ColorsPage extends TableComponent {
   constructor(props) {
@@ -26,43 +29,33 @@ class ColorsPage extends TableComponent {
     return (
       <>
         <div className="ui-bordered px-4 pt-4 mb-4">
-          <div className="form-row align-items-center">
-            <div className="col-md mb-4">
-              <label className="form-label">Verified</label>
-              <select className="custom-select">
-                <option>Any</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="col-6">
+                <AppFormField
+                  label='Nome'
+                  name='name'
+                  value={this.state.filters.name}
+                  onChange={this.handleChange}
+                  placeholder='Informe um nome...' />
+              </div>
+              <div className="col-3">
+                <AppLabel className='d-none d-md-block'>&nbsp;</AppLabel>
+                <AppButton color='primary' type='submit'>
+                  <i className="fas fa-search"></i> {''}
+                  Buscar
+                </AppButton>
+                {
+                  this.state.hasFilter && (
+                    <AppButton color='link' type='button' onClick={this.onClickClearFilters}>
+                      <i className="fas fa-eraser"></i> {''}
+                      Limpar Filtros
+                    </AppButton>
+                  )
+                }
+              </div>
             </div>
-            <div className="col-md mb-4">
-              <label className="form-label">Role</label>
-              <select className="custom-select">
-                <option>Any</option>
-                <option>User</option>
-                <option>Author</option>
-                <option>Staff</option>
-                <option>Admin</option>
-              </select>
-            </div>
-            <div className="col-md mb-4">
-              <label className="form-label">Status</label>
-              <select className="custom-select">
-                <option>Any</option>
-                <option>Active</option>
-                <option>Banned</option>
-                <option>Deleted</option>
-              </select>
-            </div>
-            <div className="col-md mb-4">
-              <label className="form-label">Latest activity</label>
-              <input type="text" id="user-list-latest-activity" className="form-control" placeholder="Any" />
-            </div>
-            <div className="col-md col-xl-2 mb-4">
-              <label className="form-label d-none d-md-block">&nbsp;</label>
-              <button type="button" className="btn btn-secondary btn-block">Show</button>
-            </div>
-          </div>
+          </form>
         </div>
 
         <AppTableSummary

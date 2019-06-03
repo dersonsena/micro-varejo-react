@@ -20,8 +20,6 @@ const defaultProps = {
 };
 
 const AppPagination = (props) => {
-  console.log(props);
-
   const {
     className,
     size,

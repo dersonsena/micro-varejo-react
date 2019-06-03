@@ -7,6 +7,7 @@ export default class TableComponent extends Component {
 
     this.state = {
       loader: true,
+      hasFilter: false,
       pagination: {
         page: 1,
         currentPage: 0,
@@ -19,6 +20,35 @@ export default class TableComponent extends Component {
         onClickPage: this.onClickPage
       }
     }
+  }
+
+  handleChange = e => {
+    let value = e.target.value;
+
+    if (e.target.type === 'checkbox') {
+      value = (value === '0' || value === '' ? '1' : '0');
+    }
+
+    this.setState({ filters: {
+      ...this.state.filters,
+      [e.target.name]: value
+    }});
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ hasFilter: true });
+    this.refreshTable();
+  };
+
+  onClickClearFilters = e => {
+    const filters = {};
+
+    for (let field in this.state.filters) {
+      filters[field] = '';
+    }
+
+    this.setState({ filters, hasFilter: false }, () => this.refreshTable());
   }
 
   refreshTable = (page = 1) => {
